@@ -11,6 +11,6 @@ def fizzbuzz():
         else:
             print(i, end=" ")
 
-# Call the function
+
 if __name__ == "__main__":
     fizzbuzz()
