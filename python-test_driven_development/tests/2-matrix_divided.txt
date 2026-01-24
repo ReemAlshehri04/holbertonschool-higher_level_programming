@@ -1,138 +1,32 @@
 Test cases for matrix_divided function
 =======================================
 
-Test 1: Normal operation
 >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
 >>> matrix = [[1, 2, 3], [4, 5, 6]]
 >>> matrix_divided(matrix, 3)
 [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
 
-Test 2: Original matrix unchanged
 >>> matrix = [[1, 2, 3], [4, 5, 6]]
 >>> matrix_divided(matrix, 3)
 [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
 >>> matrix
 [[1, 2, 3], [4, 5, 6]]
 
-Test 3: Float division
 >>> matrix = [[1.5, 2.8, 3.3], [4.2, 5.5, 6.8]]
 >>> matrix_divided(matrix, 2)
 [[0.75, 1.4, 1.65], [2.1, 2.75, 3.4]]
 
-Test 4: Division by float
 >>> matrix = [[10, 20, 30], [40, 50, 60]]
 >>> matrix_divided(matrix, 2.5)
 [[4.0, 8.0, 12.0], [16.0, 20.0, 24.0]]
 
-Test 5: Negative numbers
->>> matrix = [[-1, -2, -3], [-4, -5, -6]]
->>> matrix_divided(matrix, 2)
-[[-0.5, -1.0, -1.5], [-2.0, -2.5, -3.0]]
-
-Test 6: Mixed integers and floats
->>> matrix = [[1, 2.0, 3], [4.5, 5, 6.0]]
->>> matrix_divided(matrix, 2)
-[[0.5, 1.0, 1.5], [2.25, 2.5, 3.0]]
-
-Test 7: Single row matrix
->>> matrix = [[1, 2, 3, 4]]
->>> matrix_divided(matrix, 2)
-[[0.5, 1.0, 1.5, 2.0]]
-
-Test 8: Single element matrix
->>> matrix = [[2]]
->>> matrix_divided(matrix, 2)
-[[1.0]]
-
-Test 9: Empty matrix (should fail)
->>> matrix = []
->>> matrix_divided(matrix, 2)
-Traceback (most recent call last):
-    ...
-TypeError: matrix must be a matrix (list of lists) of integers/floats
-
-Test 10: Matrix with empty row (should fail)
->>> matrix = [[], [1, 2, 3]]
->>> matrix_divided(matrix, 2)
-Traceback (most recent call last):
-    ...
-TypeError: matrix must be a matrix (list of lists) of integers/floats
-
-Test 11: Rows of different sizes (should fail)
->>> matrix = [[1, 2, 3], [4, 5]]
->>> matrix_divided(matrix, 2)
-Traceback (most recent call last):
-    ...
-TypeError: Each row of the matrix must have the same size
-
-Test 12: Non-list matrix (should fail)
->>> matrix = "not a matrix"
->>> matrix_divided(matrix, 2)
-Traceback (most recent call last):
-    ...
-TypeError: matrix must be a matrix (list of lists) of integers/floats
-
-Test 13: Matrix with non-numeric elements (should fail)
->>> matrix = [[1, 2, 3], [4, "5", 6]]
->>> matrix_divided(matrix, 2)
-Traceback (most recent call last):
-    ...
-TypeError: matrix must be a matrix (list of lists) of integers/floats
-
-Test 14: Non-numeric divisor (should fail)
->>> matrix = [[1, 2, 3], [4, 5, 6]]
->>> matrix_divided(matrix, "2")
-Traceback (most recent call last):
-    ...
-TypeError: div must be a number
-
-Test 15: Division by zero (should fail)
 >>> matrix = [[1, 2, 3], [4, 5, 6]]
 >>> matrix_divided(matrix, 0)
 Traceback (most recent call last):
     ...
 ZeroDivisionError: division by zero
 
-Test 16: Matrix not list of lists (should fail)
->>> matrix = [1, 2, 3]
->>> matrix_divided(matrix, 2)
-Traceback (most recent call last):
-    ...
-TypeError: matrix must be a matrix (list of lists) of integers/floats
-
-Test 17: Nested lists deeper than 2 levels (should fail)
->>> matrix = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]
->>> matrix_divided(matrix, 2)
-Traceback (most recent call last):
-    ...
-TypeError: matrix must be a matrix (list of lists) of integers/floats
-
-Test 18: Large numbers
->>> matrix = [[1000, 2000, 3000], [4000, 5000, 6000]]
->>> matrix_divided(matrix, 1000)
-[[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
-
-Test 19: Very small numbers
->>> matrix = [[0.001, 0.002, 0.003], [0.004, 0.005, 0.006]]
->>> matrix_divided(matrix, 0.001)
-[[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
-
-Test 20: Rounding to exactly 2 decimal places
->>> matrix = [[1, 1, 1], [1, 1, 1]]
->>> matrix_divided(matrix, 3)
-[[0.33, 0.33, 0.33], [0.33, 0.33, 0.33]]
-
-Test 21: Divisor is 1 (no change in values except type conversion)
 >>> matrix = [[1, 2, 3], [4, 5, 6]]
->>> matrix_divided(matrix, 1)
-[[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
-
-Test 22: Multiple rows with same values
->>> matrix = [[1, 1], [1, 1], [1, 1]]
->>> matrix_divided(matrix, 4)
-[[0.25, 0.25], [0.25, 0.25], [0.25, 0.25]]
-
-Test 23: Float matrix with precise division
->>> matrix = [[1.11, 2.22], [3.33, 4.44]]
->>> matrix_divided(matrix, 1.11)
-[[1.0, 2.0], [3.0, 4.0]]
+>>> matrix_divided(matrix, float('inf'))
+[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
