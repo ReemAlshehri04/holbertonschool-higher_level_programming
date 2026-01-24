@@ -18,22 +18,21 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
     
-    # Initialize result string
-    result = ""
+    # Initialize variables
     i = 0
     length = len(text)
     
     # Process text character by character
     while i < length:
-        # Add current character to result
-        result += text[i]
+        # Print current character
+        print(text[i], end='')
         
         # Check for special characters
         if text[i] in ".?:":
-            # Add two new lines
-            result += "\n\n"
+            # Print two new lines
+            print("\n")
             
-            # Skip any spaces immediately after special character
+            # Skip any spaces immediately after the special character
             i += 1
             while i < length and text[i] == ' ':
                 i += 1
@@ -41,10 +40,5 @@ def text_indentation(text):
         
         i += 1
     
-    # Print each line after stripping leading/trailing spaces
-    lines = result.split('\n')
-    for i, line in enumerate(lines):
-        # Remove leading and trailing spaces (only spaces, not other whitespace)
-        cleaned_line = line.strip(' ')
-        if cleaned_line or i == len(lines) - 1:
-            print(cleaned_line, end='' if i == len(lines) - 1 else '\n')
+    # Print a newline at the end
+    print()
