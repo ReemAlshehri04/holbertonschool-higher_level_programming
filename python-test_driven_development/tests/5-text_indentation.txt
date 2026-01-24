@@ -1,0 +1,77 @@
+Test cases for text_indentation function
+=========================================
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+>>> text_indentation("Hello. How are you? I'm fine: thank you.")
+Hello.
+How are you?
+I'm fine:
+thank you.
+
+>>> text_indentation("This is a test.  This is another test?  And another:  test")
+This is a test.
+This is another test?
+And another:
+test
+
+>>> text_indentation("No special characters here")
+No special characters here
+
+>>> text_indentation("")
+<empty line>
+
+>>> text_indentation("   Leading spaces.   Trailing spaces   ")
+Leading spaces.
+Trailing spaces
+
+>>> try:
+...     text_indentation(123)
+... except Exception as e:
+...     print(e)
+text must be a string
+
+>>> try:
+...     text_indentation(None)
+... except Exception as e:
+...     print(e)
+text must be a string
+
+>>> try:
+...     text_indentation(["not a string"])
+... except Exception as e:
+...     print(e)
+text must be a string
+
+>>> text_indentation("Multiple... dots?? and::: colons")
+Multiple...
+dots??
+and:
+:
+colons
+
+>>> text_indentation("Hello.   How are you?     I'm fine:    thank you.")
+Hello.
+How are you?
+I'm fine:
+thank you.
+
+>>> text_indentation("Single character: A. B? C:")
+Single character:
+A.
+B?
+C:
+
+>>> text_indentation("End with dot.")
+End with dot.
+
+>>> text_indentation("End with question?")
+End with question?
+
+>>> text_indentation("End with colon:")
+End with colon:
+
+>>> text_indentation("   .   ?   :   ")
+.
+?
+:
