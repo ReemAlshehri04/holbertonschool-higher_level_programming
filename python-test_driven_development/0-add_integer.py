@@ -7,21 +7,16 @@ Module that adds two integers.
 def add_integer(a, b=98):
     """
     Adds two integers or floats (casted to int).
-
-    Args:
-        a (int or float)
-        b (int or float)
-
-    Raises:
-        TypeError: if a or b is not an integer or float
-
-    Returns:
-        int: the addition of a and b
     """
-    if not isinstance(a, (int, float)):
+
+    try:
+        a = int(a)
+    except (TypeError, ValueError):
         raise TypeError("a must be an integer")
 
-    if not isinstance(b, (int, float)):
+    try:
+        b = int(b)
+    except (TypeError, ValueError):
         raise TypeError("b must be an integer")
 
-    return int(a) + int(b)
+    return a + b
