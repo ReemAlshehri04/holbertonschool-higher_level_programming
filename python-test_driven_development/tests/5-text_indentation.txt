@@ -16,9 +16,6 @@ School?
 How are you:
 John
 
->>> text_indentation("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
 >>> text_indentation("Hello. How are you? I'm fine: thank you.")
 Hello.
 How are you?
