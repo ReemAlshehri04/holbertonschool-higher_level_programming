@@ -18,27 +18,41 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
     
-    # Initialize variables
-    i = 0
-    length = len(text)
+    # If empty string, do nothing
+    if not text:
+        return
     
-    # Process text character by character
-    while i < length:
-        # Print current character
-        print(text[i], end='')
-        
-        # Check for special characters
-        if text[i] in ".?:":
-            # Print two new lines
-            print("\n")
-            
-            # Skip any spaces immediately after the special character
-            i += 1
-            while i < length and text[i] == ' ':
-                i += 1
-            continue
-        
+    # Process the text
+    result = []
+    i = 0
+    n = len(text)
+    
+    # Skip leading spaces
+    while i < n and text[i] == ' ':
         i += 1
     
-    # Print a newline at the end
-    print()
+    while i < n:
+        # Start building current segment
+        segment = ""
+        
+        # Collect characters until special char or end
+        while i < n and text[i] not in ".?:":
+            segment += text[i]
+            i += 1
+        
+        # If we found special character, add it
+        if i < n and text[i] in ".?:":
+            segment += text[i]
+            i += 1
+            
+            # Skip spaces after special character
+            while i < n and text[i] == ' ':
+                i += 1
+        
+        # Strip spaces from segment and add if not empty
+        if segment.strip():
+            result.append(segment.rstrip())
+    
+    # Print result
+    if result:
+        print("\n\n".join(result), end='')
