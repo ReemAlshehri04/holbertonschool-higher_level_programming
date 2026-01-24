@@ -23,8 +23,6 @@ def say_my_name(first_name, last_name=""):
     if not isinstance(last_name, str):
         raise TypeError("last_name must be a string")
     
-    # Print without any modification
-    if last_name == "":
-        print("My name is {}".format(first_name))
-    else:
-        print("My name is {} {}".format(first_name, last_name))
+    # Print with space even if last_name is empty
+    # This will print "My name is Bob " (with space at the end)
+    print("My name is {} {}".format(first_name, last_name))
