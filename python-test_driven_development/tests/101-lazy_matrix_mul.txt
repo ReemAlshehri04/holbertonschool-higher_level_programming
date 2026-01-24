@@ -1,0 +1,85 @@
+Test cases for lazy_matrix_mul function
+=========================================
+
+>>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+>>> import numpy as np
+
+>>> result = lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+>>> isinstance(result, (list, np.ndarray))
+True
+>>> print(result)
+[[7 10]
+ [15 22]]
+
+>>> result = lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]])
+>>> isinstance(result, (list, np.ndarray))
+True
+>>> print(result)
+[[13 16]]
+
+>>> lazy_matrix_mul([[1]], [[2]])
+[[2]]
+
+>>> lazy_matrix_mul([[1, 2, 3]], [[4], [5], [6]])
+[[32]]
+
+>>> lazy_matrix_mul([[4], [5], [6]], [[1, 2, 3]])
+[[4 8 12]
+ [5 10 15]
+ [6 12 18]]
+
+>>> result = lazy_matrix_mul([[1.5, 2.5], [3.5, 4.5]], [[2.0, 3.0], [4.0, 5.0]])
+>>> isinstance(result, (list, np.ndarray))
+True
+>>> print(result)
+[[13. 17.]
+ [25. 33.]]
+
+>>> result = lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2, 3], [4, 5, 6]])
+>>> isinstance(result, (list, np.ndarray))
+True
+>>> print(result)
+[[ 9 12 15]
+ [19 26 33]]
+
+>>> try:
+...     lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4], [5, 6]])
+... except ValueError as e:
+...     print(e)
+m_a and m_b can't be multiplied
+
+>>> try:
+...     lazy_matrix_mul("not a list", [[1, 2]])
+... except Exception as e:
+...     print(type(e).__name__)
+ValueError
+
+>>> try:
+...     lazy_matrix_mul([[1, 2]], "not a list")
+... except Exception as e:
+...     print(type(e).__name__)
+ValueError
+
+>>> try:
+...     lazy_matrix_mul([[1, "2"]], [[3, 4]])
+... except Exception as e:
+...     print(type(e).__name__)
+ValueError
+
+>>> try:
+...     lazy_matrix_mul([], [[1, 2]])
+... except Exception as e:
+...     print(type(e).__name__)
+ValueError
+
+>>> try:
+...     lazy_matrix_mul([[1, 2]], [])
+... except Exception as e:
+...     print(type(e).__name__)
+ValueError
+
+>>> try:
+...     lazy_matrix_mul([[1, 2], [3, 4, 5]], [[1, 2], [3, 4]])
+... except Exception as e:
+...     print(type(e).__name__)
+ValueError
