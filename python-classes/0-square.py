@@ -1,3 +1,7 @@
 #!/usr/bin/python3
-class Square :
+"""This module defines an empty Square class."""
+
+
+class Square:
+    """This class defines a square with no attributes or methods."""
     pass
